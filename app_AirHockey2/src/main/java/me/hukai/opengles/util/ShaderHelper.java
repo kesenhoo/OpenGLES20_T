@@ -8,8 +8,6 @@
 ***/
 package com.airhockey.android.util;
 
-import android.util.Log;
-
 import static android.opengl.GLES20.GL_COMPILE_STATUS;
 import static android.opengl.GLES20.GL_FRAGMENT_SHADER;
 import static android.opengl.GLES20.GL_LINK_STATUS;
@@ -28,6 +26,7 @@ import static android.opengl.GLES20.glGetShaderiv;
 import static android.opengl.GLES20.glLinkProgram;
 import static android.opengl.GLES20.glShaderSource;
 import static android.opengl.GLES20.glValidateProgram;
+import android.util.Log;
 
 public class ShaderHelper {
     private static final String TAG = "ShaderHelper";
