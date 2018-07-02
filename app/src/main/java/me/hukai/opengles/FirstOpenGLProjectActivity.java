@@ -6,7 +6,7 @@
  * We make no guarantees that this code is fit for any purpose.
  * Visit http://www.pragmaticprogrammer.com/titles/kbogla for more book information.
  ***/
-package me.hukai.hello_opengles_20;
+package me.hukai.opengles;
 
 import android.app.Activity;
 import android.app.ActivityManager;
