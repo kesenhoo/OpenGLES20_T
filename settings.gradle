@@ -1,5 +1,4 @@
 include ':app'
-include ':app_AirHockey'
 include ':app_AirHockey1'
 include ':app_AirHockey2'
 

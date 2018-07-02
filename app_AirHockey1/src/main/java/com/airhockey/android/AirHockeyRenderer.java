@@ -5,7 +5,7 @@
  * courses, books, articles, and the like. Contact us if you are in doubt.
  * We make no guarantees that this code is fit for any purpose. 
  * Visit http://www.pragmaticprogrammer.com/titles/kbogla for more book information.
-***/
+ ***/
 package com.airhockey.android;
 
 import static android.opengl.GLES20.GL_COLOR_BUFFER_BIT;
@@ -40,7 +40,7 @@ import com.airhockey.android.util.TextResourceReader;
 
 public class AirHockeyRenderer implements Renderer {
     private static final String U_COLOR = "u_Color";
-    private static final String A_POSITION = "a_Position";    
+    private static final String A_POSITION = "a_Position";
     private static final int POSITION_COMPONENT_COUNT = 2;
     private static final int BYTES_PER_FLOAT = 4;
     private final FloatBuffer vertexData;
@@ -92,29 +92,29 @@ public class AirHockeyRenderer implements Renderer {
 		};
          */
         float[] tableVerticesWithTriangles = {
-            // Triangle 1
-            -0.5f, -0.5f, 
-             0.5f,  0.5f,
-            -0.5f,  0.5f,
+                // Triangle 1
+                -0.5f, -0.5f,
+                0.5f,  0.5f,
+                -0.5f,  0.5f,
 
-            // Triangle 2
-            -0.5f, -0.5f, 
-             0.5f, -0.5f, 
-             0.5f,  0.5f,
+                // Triangle 2
+                -0.5f, -0.5f,
+                0.5f, -0.5f,
+                0.5f,  0.5f,
 
-            // Line 1
-            -0.5f, 0f, 
-             0.5f, 0f,
+                // Line 1
+                -0.5f, 0f,
+                0.5f, 0f,
 
-            // Mallets
-            0f, -0.25f, 
-            0f,  0.25f
+                // Mallets
+                0f, -0.25f,
+                0f,  0.25f
         };
-        
+
         vertexData = ByteBuffer
-            .allocateDirect(tableVerticesWithTriangles.length * BYTES_PER_FLOAT)
-            .order(ByteOrder.nativeOrder())
-            .asFloatBuffer();
+                .allocateDirect(tableVerticesWithTriangles.length * BYTES_PER_FLOAT)
+                .order(ByteOrder.nativeOrder())
+                .asFloatBuffer();
 
         vertexData.put(tableVerticesWithTriangles);
     }
@@ -132,9 +132,9 @@ public class AirHockeyRenderer implements Renderer {
         glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 
         String vertexShaderSource = TextResourceReader
-            .readTextFileFromResource(context, R.raw.simple_vertex_shader);
+                .readTextFileFromResource(context, R.raw.simple_vertex_shader);
         String fragmentShaderSource = TextResourceReader
-            .readTextFileFromResource(context, R.raw.simple_fragment_shader);
+                .readTextFileFromResource(context, R.raw.simple_fragment_shader);
 
         int vertexShader = ShaderHelper.compileVertexShader(vertexShaderSource);
         int fragmentShader = ShaderHelper.compileFragmentShader(fragmentShaderSource);
@@ -148,14 +148,14 @@ public class AirHockeyRenderer implements Renderer {
         glUseProgram(program);
 
         uColorLocation = glGetUniformLocation(program, U_COLOR);
-        
+
         aPositionLocation = glGetAttribLocation(program, A_POSITION);
-        
+
         // Bind our data, specified by the variable vertexData, to the vertex
         // attribute at location A_POSITION_LOCATION.
         vertexData.position(0);
-        glVertexAttribPointer(aPositionLocation, POSITION_COMPONENT_COUNT, GL_FLOAT, 
-            false, 0, vertexData);
+        glVertexAttribPointer(aPositionLocation, POSITION_COMPONENT_COUNT, GL_FLOAT,
+                false, 0, vertexData);
 
         glEnableVertexAttribArray(aPositionLocation);
     }
@@ -165,7 +165,7 @@ public class AirHockeyRenderer implements Renderer {
      * called at least once when the surface is initialized. Keep in mind that
      * Android normally restarts an Activity on rotation, and in that case, the
      * renderer will be destroyed and a new one created.
-     * 
+     *
      * @param width
      *            The new width, in pixels.
      * @param height
@@ -174,7 +174,7 @@ public class AirHockeyRenderer implements Renderer {
     @Override
     public void onSurfaceChanged(GL10 glUnused, int width, int height) {
         // Set the OpenGL viewport to fill the entire surface.
-        glViewport(0, 0, width, height);		
+        glViewport(0, 0, width, height);
     }
 
     /**
@@ -185,21 +185,21 @@ public class AirHockeyRenderer implements Renderer {
     public void onDrawFrame(GL10 glUnused) {
         // Clear the rendering surface.
         glClear(GL_COLOR_BUFFER_BIT);
-        
+
         // Draw the table.
-        glUniform4f(uColorLocation, 1.0f, 1.0f, 1.0f, 1.0f);		
+        glUniform4f(uColorLocation, 1.0f, 1.0f, 1.0f, 1.0f);
         glDrawArrays(GL_TRIANGLES, 0, 6);
-        
+
         // Draw the center dividing line.
-        glUniform4f(uColorLocation, 1.0f, 0.0f, 0.0f, 1.0f);		
-        glDrawArrays(GL_LINES, 6, 2); 
-        
+        glUniform4f(uColorLocation, 1.0f, 0.0f, 0.0f, 1.0f);
+        glDrawArrays(GL_LINES, 6, 2);
+
         // Draw the first mallet blue.        
-        glUniform4f(uColorLocation, 0.0f, 0.0f, 1.0f, 1.0f);		
+        glUniform4f(uColorLocation, 0.0f, 0.0f, 1.0f, 1.0f);
         glDrawArrays(GL_POINTS, 8, 1);
 
         // Draw the second mallet red.
-        glUniform4f(uColorLocation, 1.0f, 0.0f, 0.0f, 1.0f);		
+        glUniform4f(uColorLocation, 1.0f, 0.0f, 0.0f, 1.0f);
         glDrawArrays(GL_POINTS, 9, 1);
     }
 }

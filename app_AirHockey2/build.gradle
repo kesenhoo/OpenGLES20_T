@@ -3,7 +3,7 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 26
     defaultConfig {
-        applicationId "me.hukai.hello_opengles_20"
+        applicationId "com.airhockey.android"
         minSdkVersion 16
         targetSdkVersion 26
         versionCode 1

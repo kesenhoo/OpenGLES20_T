@@ -6,7 +6,21 @@
  * We make no guarantees that this code is fit for any purpose. 
  * Visit http://www.pragmaticprogrammer.com/titles/kbogla for more book information.
  ***/
-package me.hukai.opengles;
+package com.airhockey.android;
+
+import android.content.Context;
+import android.opengl.GLSurfaceView.Renderer;
+
+import com.airhockey.android.util.LoggerConfig;
+import com.airhockey.android.util.ShaderHelper;
+import com.airhockey.android.util.TextResourceReader;
+
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
+import java.nio.FloatBuffer;
+
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.opengles.GL10;
 
 import static android.opengl.GLES20.GL_COLOR_BUFFER_BIT;
 import static android.opengl.GLES20.GL_FLOAT;
@@ -22,28 +36,13 @@ import static android.opengl.GLES20.glUseProgram;
 import static android.opengl.GLES20.glVertexAttribPointer;
 import static android.opengl.GLES20.glViewport;
 
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
-import java.nio.FloatBuffer;
-
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.opengles.GL10;
-
-import android.content.Context;
-import android.opengl.GLSurfaceView.Renderer;
-
-import com.airhockey.android.util.LoggerConfig;
-import com.airhockey.android.util.ShaderHelper;
-import com.airhockey.android.util.TextResourceReader;
-
 public class AirHockeyRenderer implements Renderer {
     private static final String A_POSITION = "a_Position";
     private static final String A_COLOR = "a_Color";
     private static final int POSITION_COMPONENT_COUNT = 2;
     private static final int COLOR_COMPONENT_COUNT = 3;
     private static final int BYTES_PER_FLOAT = 4;
-    private static final int STRIDE =
-            (POSITION_COMPONENT_COUNT + COLOR_COMPONENT_COUNT) * BYTES_PER_FLOAT;
+    private static final int STRIDE = (POSITION_COMPONENT_COUNT + COLOR_COMPONENT_COUNT) * BYTES_PER_FLOAT;
 
     private final FloatBuffer vertexData;
     private final Context context;

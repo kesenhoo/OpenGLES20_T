@@ -5,7 +5,7 @@
  * courses, books, articles, and the like. Contact us if you are in doubt.
  * We make no guarantees that this code is fit for any purpose. 
  * Visit http://www.pragmaticprogrammer.com/titles/kbogla for more book information.
-***/
+ ***/
 package com.airhockey.android.util;
 
 import java.io.BufferedReader;
@@ -22,14 +22,14 @@ public class TextResourceReader {
      * text.
      */
     public static String readTextFileFromResource(Context context,
-        int resourceId) {
+                                                  int resourceId) {
         StringBuilder body = new StringBuilder();
 
         try {
-            InputStream inputStream = 
-                context.getResources().openRawResource(resourceId);
-            InputStreamReader inputStreamReader = 
-                new InputStreamReader(inputStream);
+            InputStream inputStream =
+                    context.getResources().openRawResource(resourceId);
+            InputStreamReader inputStreamReader =
+                    new InputStreamReader(inputStream);
             BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
 
             String nextLine;
@@ -40,7 +40,7 @@ public class TextResourceReader {
             }
         } catch (IOException e) {
             throw new RuntimeException(
-                "Could not open resource: " + resourceId, e);
+                    "Could not open resource: " + resourceId, e);
         } catch (Resources.NotFoundException nfe) {
             throw new RuntimeException("Resource not found: " + resourceId, nfe);
         }
