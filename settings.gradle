@@ -6,6 +6,7 @@ include ':app_AirHockey3D'
 include ':app_AirHockeyTextured'
 include ':app_AirHockeyWithBetterMallets'
 include ':app_AirHockeyTouch'
+include ':app_Particles'
 
 
 
