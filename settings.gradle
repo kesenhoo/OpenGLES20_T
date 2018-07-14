@@ -5,6 +5,8 @@ include ':app_AirHockeyOrtho'
 include ':app_AirHockey3D'
 include ':app_AirHockeyTextured'
 include ':app_AirHockeyWithBetterMallets'
+include ':app_AirHockeyTouch'
+
 
 
 
